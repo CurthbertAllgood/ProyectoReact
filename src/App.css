@@ -7,7 +7,20 @@
   pointer-events: none;
 }
 
+.espacio{
+  flex: auto;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
 
+.contador{
+  flex:auto;
+  margin:auto;
+  border: 1px;
+  padding: 20px;
+  text-align: center;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
