@@ -8,10 +8,11 @@
 }
 
 .espacio{
-  flex: auto;
-  margin-right: 15px;
-  margin-left: 15px;
-  margin-bottom: 15px;
+  justify-content: center; 
+}
+.espacioCartas{
+  justify-content: center;
+  display: wrap;
 }
 
 .contador{
@@ -19,12 +20,20 @@
   margin:auto;
   border: 1px;
   padding: 20px;
+  justify-content: center;
   text-align: center;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.cartas{
+  margin-top:20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .App-header {

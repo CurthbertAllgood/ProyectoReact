@@ -1,18 +1,38 @@
-import React,{useState} from 'react';
-import Producto from '../index';
-import ItemCount from '../ItemCount/ItemCount';
-export const ItemListContainer =()=>{
-    const onAdd=(cont)=>{
-        alert(`hiciste ${cont} pedidos`);
-    }
-    const [items, setItems]=useState([]);
+import React, { useEffect, useState } from 'react';
+import ItemList from '../Items/Item/ItemList'
+import { getStock,getPedidoPorCodigo,getPedidoPorId} from '../../asyncmock'
+import { useParams } from 'react-router-dom'
+import Loader from '../Loader/Loader'
 
-    fetch('https://pokeapi.co/api/v2/pokemon/').then(response=> response.json()).then(data=>setItems(data.results));
-    
+export const ItemListContainer =({greeting})=>{
+    const [pedido, setPedidos] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const { id, codigo } = useParams()
+
+    useEffect(()=>{
+        setLoading(true)
+
+        if(!id && !codigo){
+            getStock().then(pedido=>setPedidos(pedido))
+            setLoading(false)
+        }
+        else if(id){
+            getPedidoPorId(id).then(pedido=>{
+                setPedidos(pedido)
+                setLoading(false)
+            })
+        }
+        else{
+            getPedidoPorCodigo(codigo).then(pedido=>{
+                setPedidos(pedido)
+                setLoading(false)
+            })
+        }
+    },[id,codigo])
     return(
         <div>
-        <Producto Nombre='Holaa' Continuacion='este es un ItemList'/>
-        <ItemCount initial={0} stock={10} onAdd={onAdd}/>
+        {loading ? <Loader /> : <ItemList pedido={pedido}/> }
+        
         </div>
     );
 };
