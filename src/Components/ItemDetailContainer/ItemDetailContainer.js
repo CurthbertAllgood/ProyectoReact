@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail/ItemDetail';
-import ItemList from '../Items/Item/ItemList';
-import { getPedidoPorId } from '../../asyncmock';
-
+import React,{useState,useEffect} from 'react'
+import {useParams} from 'react-router-dom'
+import axios from 'axios'
 export const ItemDetailContainer=()=>{
 
-    const getPedidoPorId=(id)=>{
-        return new Promise((resolve, reject)=>{
-            setTimeout(()=>{
-                resolve(items.find(id=>items.id===id))
-            },5000)
-        })
-    };
+	const [items, setItems] = useState([]);
+    const {detailId}=useParams();
+	useEffect(() => {
+		axios('https://breakingbadapi.com/api/characters').then((res) =>
+			setItems(res.data)
+		);
+	}, []);
 
-    const [item, setItem]=useState()
-    const [loading, setLoading]=useState(false)
-    const {itemId}=useParams();
     useEffect(()=>{
-        setLoading(true)
-        getItemById(itemId)
-        .then(item=>{
-            setItem(item)
-            setLoading(false)
-        })
-    },[itemId])
+        const getItem= new Promise(resolve=>{
+            setTimeout(()=>{
+                resolve(items)
+            })
+        });
+        getItem.then(res=>setItems(res.find(detalle=>detalle.char_id===detailId)));
+    },[]);
+
     return(
         <div>
-            <ItemDetail/>
+            <ItemDetail items={items}/>
         </div>
 
     );
