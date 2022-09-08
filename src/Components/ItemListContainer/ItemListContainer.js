@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from '../Items/Item/ItemList'
 import { useParams } from 'react-router-dom'
-import Loader from '../Loader/Loader'
 import axios from 'axios'
 export const ItemListContainer =()=>{
     
     
-    const [loading, setLoading] = useState(false)
-    const { char_id, status } = useParams()
+    const { categoriaStatus } = useParams()
 	const [items, setItems] = useState([]);
 
 	useEffect(() => {
@@ -16,54 +14,27 @@ export const ItemListContainer =()=>{
 		);
 	}, []);
 
-    const getStock=()=>{
+    useEffect(()=>{
+    const getItems=()=>{
         return new Promise((resolve, reject)=>{
             setTimeout(()=>{
                 resolve(items)
-            }   )
-        })
+            });
+        });
     }
-
-    
-    const  getPedidoPorCodigo=(getPedidoPorCodigo)=>{
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve(items.filter(item=>item.codigo===getPedidoPorCodigo))
-        })
-    })
-}
-
-
-const  getPedidoPorId=(getPedidoPorId)=>{
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve(items.filter(item=>item.char_id===getPedidoPorId))
-        })
-    })
-}
-
-    useEffect(()=>{
-        setLoading(true)
-        if(!char_id && !status){
-            getStock().then(items=>setItems(items))
-            setLoading(false)
-        }
-        else if(char_id){
-            getPedidoPorId(char_id).then(items=>{
-                setItems(items)
-                setLoading(false)
-            })
+        if(categoriaStatus){
+            console.log("entraste al if")
+            getItems().then(res=>setItems(res.filter(alives=>alives.status===categoriaStatus)));
         }
         else{
-            getPedidoPorCodigo(status).then(items=>{
-                setItems(items)
-                setLoading(false)
-            })
+            console.log("entraste al else")
+            getItems().then(items=>setItems(items))
+
         }
-    },[char_id,status])
+    },[categoriaStatus])
     return(
-        <div key={items.char_id}>
-        {loading ? <Loader /> : <ItemList items={items}/> }
+        <div>
+        {<ItemList items={items}/> }
     </div>
     );
 };
