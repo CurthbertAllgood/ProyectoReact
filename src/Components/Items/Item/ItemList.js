@@ -9,8 +9,8 @@ const ItemList = ({items}) => {
 		<div>
 			{items.map((item) => {
 				return (
-					<div key={item.char_id}>
-						<Link to={`/detail/${item.char_id}`}>
+					<div key={item}>
+						<Link to={`/detail/${item.id}`}>
 							<ItemCard data={item} />
 						</Link>
 					</div>

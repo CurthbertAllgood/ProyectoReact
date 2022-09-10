@@ -1,16 +1,15 @@
-import {Link} from 'react-router-dom';
 import React from 'react';
 
-const ItemDetail = ({ char_id,name, img, occupation,status }) => {
+const ItemDetail = ({ nombre, descripcion,precio,img }) => {
 
 return (
     
-    <Link to={`/detail/${char_id}`}>
-    <h1>{name}</h1>
-    <h2>{occupation}</h2>
-    <h2>{status}</h2>
-    <img src={img} alt="" />
-    </Link>
+    <div>
+        <h1>{nombre}</h1>
+        <h2>{descripcion}</h2>
+        <h2>{precio}</h2>
+        <img src={img} alt="" />
+    </div>
 );
 };
 

@@ -12,13 +12,13 @@ const ItemCard = ({ data }) => {
 				<CardMedia component='img' image={data.img} />
 				<CardContent>
 					<Typography gutterBottom variant='h5' component='div'>
-						Name: {data.name}
+						{data.nombre}
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-						Status: {data.status}
+						{data.descripcion}
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-						Birthday: {data.birthday}
+					${data.precio}
 					</Typography>
 				</CardContent>
 			</CardActionArea>
