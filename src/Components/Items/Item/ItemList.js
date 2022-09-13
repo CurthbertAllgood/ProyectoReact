@@ -9,7 +9,7 @@ const ItemList = ({items}) => {
 		<div>
 			{items.map((item) => {
 				return (
-					<div key={item}>
+					<div key={item.codigo}>
 						<Link to={`/detail/${item.id}`}>
 							<ItemCard data={item} />
 						</Link>

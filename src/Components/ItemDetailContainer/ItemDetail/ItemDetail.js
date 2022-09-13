@@ -1,15 +1,52 @@
-import React from 'react';
 
-const ItemDetail = ({ nombre, descripcion,precio,img }) => {
+import React, {useState} from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea, Button } from '@mui/material';
+import ItemCount from '../../ItemCount/ItemCount';
+import {Link} from 'react-router-dom'
 
+const ItemDetail = ({ item }) => {
+
+	const [add, setAdd]=useState(false)
+
+
+
+    const onAdd=(quantity)=>{
+		setAdd(!add)
+        alert(`Compraste ${quantity} ${item.nombre}`)
+    }
 return (
+<Card sx={{ maxWidth: 345 }} >
     
-    <div>
-        <h1>{nombre}</h1>
-        <h2>{descripcion}</h2>
-        <h2>{precio}</h2>
-        <img src={img} alt="" />
-    </div>
+			<CardActionArea>
+				<CardMedia component='img' image={item.img} />
+				<CardContent>
+					<Typography gutterBottom variant='h5' component='div'>
+						{item.nombre}
+					</Typography>
+					<Typography variant='body2' color='text.secondary'>
+						{item.descripcion}
+					</Typography>
+					<Typography variant='body2' color='text.secondary'>
+					${item.precio}
+					</Typography>
+					<div>
+					{
+                    	add ?<div className='meta'>¡Pedido añadido!</div>
+						: <ItemCount initial={1} stock={item.cantidad} onAdd={onAdd}/>
+					}
+					</div>
+				</CardContent >
+				<Link to='/Cart'>
+				<Button variant="contained" color="success">
+					Finalizar Compra
+					</Button>	
+                	</Link>
+			</CardActionArea>
+		</Card>
 );
 };
 

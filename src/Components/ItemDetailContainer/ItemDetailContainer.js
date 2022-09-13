@@ -80,7 +80,7 @@ export const ItemDetailContainer=()=>{
 
     return(
         <div>
-            <ItemDetail key={itemid}/>
+            <ItemDetail item={itemid}/>
         </div>
 
     );
