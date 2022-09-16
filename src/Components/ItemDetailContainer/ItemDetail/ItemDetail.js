@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState, useContext,CartContext} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,11 +12,12 @@ const ItemDetail = ({ item }) => {
 
 	const [add, setAdd]=useState(false)
 
+	const {addItem}=useContext(CartContext);
+
 
 
     const onAdd=(quantity)=>{
 		setAdd(!add)
-        alert(`Compraste ${quantity} ${item.nombre}`)
     }
 return (
 <Card sx={{ maxWidth: 345 }} >
@@ -36,7 +37,7 @@ return (
 					<div>
 					{
                     	add ?<div className='meta'>¡Pedido añadido!</div>
-						: <ItemCount initial={1} stock={item.cantidad} onAdd={onAdd}/>
+						: <ItemCount initial={1} stock={item.cantidad} onAdd={addItem}/>
 					}
 					</div>
 				</CardContent >

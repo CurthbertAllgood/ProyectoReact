@@ -2,22 +2,14 @@ import React from 'react';
 import './App.css';
 import Home from './views/Home';
 import Status from './views/Status';
-import Cart from './views/Cart';
-import NavBar from './Components/NavBar';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import {CartProvider} from './Components/CartProvider/useContext'
+import Router from './Components/BrowserRouter/Router'
 function App() {
   return (
     <div className="App">
-  | <BrowserRouter>
-  <NavBar/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/status/:codigo' element={<Status/>}/>
-        <Route path='/detail/:id' element={<ItemDetailContainer/>}/>
-        <Route path='/Cart'element={<Cart/>}/>
-      </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <Router/>
+      </CartProvider>
     </div>
   );
 }

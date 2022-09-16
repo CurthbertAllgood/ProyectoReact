@@ -15,7 +15,7 @@ const NavBar=()=>{
           <Link className="nav-link active" aria-current="page" to='/status/Bebida'>Bebidas</Link>
         </li>
         <li className="nav-item">
-          <Link to='/'><CartWidget/></Link>
+          <Link to='/Cart'><CartWidget/></Link>
         </li>
       </ul>
     </div>
