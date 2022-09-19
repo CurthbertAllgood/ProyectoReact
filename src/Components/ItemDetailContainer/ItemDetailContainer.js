@@ -64,7 +64,7 @@ export const ItemDetailContainer=()=>{
         }
     ]
 
-    const [itemid, setItemid]=useState([]);
+    const [item, setItemid]=useState({});
     const { id } = useParams()  
     console.log(id);  
     useEffect(()=>{
@@ -73,14 +73,14 @@ export const ItemDetailContainer=()=>{
                 resolve(BBDD)
             })
         });
-        getItem.then(res=>setItemid(res.find(detail=>detail.id===parseInt  (id))));
+        getItem.then(res=>setItemid(res.find(detail=>detail.id===id)));
         console.log(getItem)
     },[]);
-    console.log(itemid)
+
 
     return(
         <div>
-            <ItemDetail item={itemid}/>
+            <ItemDetail item={ item }/>
         </div>
 
     );

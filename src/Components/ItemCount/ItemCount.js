@@ -1,25 +1,29 @@
 import React,{useState} from 'react';
 
 
-const ItemCount=( {initial, stock, onAdd})=>{
-    const [cont, setCount]=useState(initial);
+const ItemCount= ({item, stock, initial, addItem}) =>{
+    const [qty, setQty]=useState(initial);
 
-    const Bajacont=()=>{
-        setCount(cont-1);
+    const SumaQty=()=>{
+        if(qty<stock){
+            setQty(qty+1);
+        }
     };
 
-    const Subecont=()=>{
-        setCount(cont+1);
+    const RestaQty=()=>{
+        if(qty>0){
+            setQty(qty-1);
+        }
     };
 
 
     return (
         <div className='contador'>
-            <button disabled={cont>=stock} onClick={Subecont}>+</button>
-            <span className='espacio'>{cont}</span>
-            <button disabled={cont<1} onClick={Bajacont}>-</button>
+            <button disabled={qty>=stock} onClick={RestaQty}>-</button>
+            <span className='espacio'>{qty}</span>
+            <button disabled={qty<1} onClick={SumaQty}>+</button>
                 <div>
-                <button disabled={stock<=0} onClick={()=>onAdd(cont)}>Agregar al pedido</button>
+                <button disabled={stock<=0} onClick={()=> addItem({item, qty})}>Agregar al pedido</button>
                 </div>
         </div>
 
