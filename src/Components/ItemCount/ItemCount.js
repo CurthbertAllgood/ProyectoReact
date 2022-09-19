@@ -19,11 +19,11 @@ const ItemCount= ({item, stock, initial, addItem}) =>{
 
     return (
         <div className='contador'>
-            <button disabled={qty>=stock} onClick={RestaQty}>-</button>
+            <button disabled={qty<1} onClick={RestaQty}>-</button>
             <span className='espacio'>{qty}</span>
-            <button disabled={qty<1} onClick={SumaQty}>+</button>
+            <button disabled={qty>=stock} onClick={SumaQty}>+</button>
                 <div>
-                <button disabled={stock<=0} onClick={()=> addItem({item, qty})}>Agregar al pedido</button>
+                <button disabled={stock<=0} onClick={()=> addItem(item, qty)}>Agregar al pedido</button>
                 </div>
         </div>
 

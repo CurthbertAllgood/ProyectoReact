@@ -11,8 +11,14 @@ const NavBar=()=>{
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
+      <li className="nav-item">
+          <Link className="nav-link active" aria-current="page" to='/status/character/Personajes'>Personajes</Link>
+        </li>
+      <li className="nav-item">
+          <Link className="nav-link active" aria-current="page" to='/status/location/Localizaciones'>Locaciones</Link>
+        </li>
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to='/status/Bebida'>Bebidas</Link>
+          <Link className="nav-link active" aria-current="page" to='/status/episode/Episodios'>Episodios</Link>
         </li>
         <li className="nav-item">
           <Link to='/Cart'><CartWidget/></Link>

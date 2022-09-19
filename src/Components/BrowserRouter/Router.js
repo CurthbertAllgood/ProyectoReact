@@ -14,7 +14,7 @@ const Router=()=>{
 <NavBar/>
 <Routes>
 <Route path='/' element={<Home/>}/>
-<Route path='/status/:codigo' element={<Status/>}/>
+<Route path='/status/:categoria/:categoriaNombre' element={<Status/>}/>
 <Route path='/detail/:id' element={<ItemDetailContainer/>}/>
 <Route path='/Cart'element={<Cart/>}/>
 </Routes>
