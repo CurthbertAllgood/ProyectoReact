@@ -14,12 +14,6 @@ const NavBar=()=>{
       <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to='/status/character/Personajes'>Personajes</Link>
         </li>
-      <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to='/status/location/Localizaciones'>Locaciones</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to='/status/episode/Episodios'>Episodios</Link>
-        </li>
         <li className="nav-item">
           <Link to='/Cart'><CartWidget/></Link>
         </li>

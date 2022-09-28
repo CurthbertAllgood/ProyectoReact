@@ -5,7 +5,9 @@ import ItemListContainer from '../Components/ItemListContainer/ItemListContainer
 const Status =() =>{
     const {categoria, categoriaNombre}= useParams();
     return (
+        
         <div>
+            <h1>control</h1>
             <ItemListContainer categoria={categoria} categoriaNombre={categoriaNombre}/>
         </div>
     )

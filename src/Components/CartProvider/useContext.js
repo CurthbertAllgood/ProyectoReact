@@ -1,4 +1,5 @@
 import React, {createContext,useState} from 'react';
+import { act } from 'react-dom/test-utils';
 
 export const CartContext = createContext([])
 
@@ -30,8 +31,16 @@ export const CartProvider = ({children}) => {
     const clearItems=()=>{
         setItems([])
     }
+
+    const totalPrice=()=>{
+        return items.reduce((prev,act)=>prev+ act.qty * act.qty,0);
+    }
+    const totalProducts =()=> {
+        items.reduce((acumulador,productoActual)=>acumulador +productoActual.qty, 0)
+    }
     return (
-        <CartContext.Provider value={{items, addItem, removeItem,clearItems}}>
+
+        <CartContext.Provider value={{items, addItem, removeItem,clearItems, totalPrice, totalProducts}}>
             {children}
             </CartContext.Provider>
             )

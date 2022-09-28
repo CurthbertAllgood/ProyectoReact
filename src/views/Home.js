@@ -4,12 +4,9 @@ const Home=()=>{
     return(
     <div>
         <br /><br /><br />
-        <ItemListContainer categoria="character" categoriaNombre='Personajes'/>
+        <ItemListContainer categoria="character" categoriaNombre='Personaje'/>
         <br /><br /><br />
-        <ItemListContainer categoria="location" categoriaNombre='Localizaciones'/>
-        <br /><br /><br />
-        <ItemListContainer categoria="episode" categoriaNombre='Episodios'/>
-
+        
     </div>
     );  
 };

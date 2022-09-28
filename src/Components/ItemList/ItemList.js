@@ -1,13 +1,13 @@
 import React from 'react';
 import Items from '../Item/Items';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
-const ItemList = ({items}) => {
-
-
+const ItemList = ({lista}) => {
+	
 	return (
 		<div>
-			{items.map((item) => {
+			{lista.map((item) => {
+				console.log(item)
 				return (
 					<div key={item.id}>
 						<Link to={`/detail/${item.id}`}>
