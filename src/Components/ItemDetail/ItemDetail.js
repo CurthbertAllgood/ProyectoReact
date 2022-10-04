@@ -9,32 +9,34 @@ import ItemCount from '../ItemCount/ItemCount'
 import {Link} from 'react-router-dom'
 import {CartContext}  from '../CartProvider/useContext';
 
-const ItemDetail = ({lista}) => {
+const ItemDetail = ({ items }) => {
 	const [add, setAdd] =useState(false);
 	const { addItem }=useContext(CartContext);
-	console.log(lista)
+	console.log(items)
+	
 	
 
 return (
+	<div>
 <Card sx={{ maxWidth: 345 }} >
     
 			<CardActionArea>
-				<CardMedia component='img' image={lista.image} />
+				<CardMedia component='img' image={items.image} />
 				<CardContent>
 					<Typography gutterBottom variant='h5' component='div'>
-						{lista.title}
+						{items.title}
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-						{lista.description}
+						{items.description}
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-					{lista.price}
+					{items.price}
 					</Typography>
 					<div>{
 						add ?
 							<div>¡Añadido!</div>
 							:
-						<ItemCount lista = {lista} stock = {10} initial = {1} addItem = { addItem }/>
+						<ItemCount items = {items} stock = {10} initial = {1} addItem = { addItem }/>
 							}
 					</div>
 				</CardContent >
@@ -45,6 +47,7 @@ return (
                 </Link>
 			</CardActionArea>
 		</Card>
+		</div>
 );
 };
 
