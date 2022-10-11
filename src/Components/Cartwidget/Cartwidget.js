@@ -8,8 +8,7 @@ const CartWidget=()=>{
     let itemsInCart=0;
         
     items.map((item)=> {
-        return 
-        itemsInCart=itemsInCart+item.qty;
+        return (itemsInCart=itemsInCart+item.qty)
     })
     return(
         <div>

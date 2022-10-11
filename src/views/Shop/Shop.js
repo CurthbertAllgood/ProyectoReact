@@ -24,6 +24,7 @@ const Shop = () => {
 	const [values, setValues] = useState(initialState);
 	// Este estado está destinado a guardar el id de la compra
 	const [purchaseID, setPurchaseID] = useState('');
+
 	const handleOnChange = (e) => {
 		const { value, name } = e.target;
 		setValues({ ...values, [name]: value });
