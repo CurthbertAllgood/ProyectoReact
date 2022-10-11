@@ -13,17 +13,8 @@ export const CartProvider = ({children}) => {
 
 
     const addItem = (item, qty) =>{
-        isInCart(item.id)
-        ?
-        setItems(items.map((prod)=>{
-            if (prod.id===item.id){
-                prod.qty+=qty;
-            }
-            return prod
-        }))
-        :
-        setItems([...items, {id: item.id, nombre: item.name, genero:item.gender, imagen: item.image, qty:qty}]);
-    }
+        setItems([...items, {...item, qty:qty}]);
+        }
 
     const removeItem=(id)=>{
         setItems(items.filter(item=>item.id!==id))
@@ -33,10 +24,11 @@ export const CartProvider = ({children}) => {
     }
 
     const totalPrice=()=>{
-        return items.reduce((prev,act)=>prev+ act.qty * act.qty,0);
+        return items.reduce((prev,act)=>prev + act.price * act.qty,0);
     }
     const totalProducts =()=> {
-        items.reduce((acumulador,productoActual)=>acumulador +productoActual.qty, 0)
+        const acumulador=0;
+        items.reduce((acumulador,productoActual)=>acumulador + productoActual.qty, 0)
     }
     return (
 

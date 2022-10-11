@@ -10,11 +10,11 @@ import {Link} from 'react-router-dom'
 import {CartContext}  from '../CartProvider/useContext';
 
 const ItemDetail = ({ items }) => {
-	const [add, setAdd] =useState(false);
-	const { addItem }=useContext(CartContext);
-	console.log(items)
+
+
+	const { addItem } = useContext(CartContext);
 	
-	
+
 
 return (
 	<div>
@@ -30,19 +30,17 @@ return (
 						{items.description}
 					</Typography>
 					<Typography variant='body2' color='text.secondary'>
-					{items.price}
+					<h3>Precio: ${items.price}</h3>
 					</Typography>
-					<div>{
-						add ?
-							<div>¡Añadido!</div>
-							:
+					<div>
+						{
 						<ItemCount items = {items} stock = {10} initial = {1} addItem = { addItem }/>
-							}
+						}
 					</div>
 				</CardContent >
 				<Link to='/Cart'>
 				<Button variant="contained" color="success">
-					Finalizar Compra
+					Ir al Carrito
 					</Button>	
                 </Link>
 			</CardActionArea>

@@ -2,8 +2,9 @@ import React from 'react'
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
 import NavBar from '../NavBar'
 import Home from '../../views/Home'
-import Status from '../../views/Status'
+import Category from '../../views/Category'
 import Cart from '../../views/Cart'
+import Shop from '../../views/Shop/Shop'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 
@@ -14,8 +15,9 @@ const Router=()=>{
 <NavBar/>
 <Routes>
 <Route path='/' element={<Home/>}/>
-<Route path='/status/:categoria/:categoriaNombre' element={<Status/>}/>
+<Route path='/category/:category' element={<Category/>}/>
 <Route path='/detail/:id' element={<ItemDetailContainer/>}/>
+<Route path='/Shop/' element={<Shop/>}/>
 <Route path='/Cart'element={<Cart/>}/>
 </Routes>
 </BrowserRouter>

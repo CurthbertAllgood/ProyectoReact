@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from '../ItemList/ItemList'
-import Loader from '../Loader/Loader'
 import {db} from '../../firebase/firebaseConfig';
 import {collection, query, getDocs } from "firebase/firestore"
+import Loader from '../Loader/Loader'
+import './itemListContainer.css'
 
-const ItemListContainer= ({categoriaNombre}) =>{
+const ItemListContainer= () =>{
     const [listaProductos, setItems] = useState([]);
-	const getProductos = async() => {
+    const [isLoading, setIsLoading] = useState(true);
+	
+const getProductos = async () => {
 		const q = query(collection(db, "listaDeProductos"));
 		const querySnapShot=await getDocs(q);
         const docs = [];
@@ -18,18 +21,25 @@ const ItemListContainer= ({categoriaNombre}) =>{
 
     useEffect(()=>{
         getProductos();
+            setTimeout(()=>{
+                setIsLoading(false);
+            },1000);
     },[]);
 
-
-
     return(
-        <div>
-            <h1>{categoriaNombre}</h1>
-                {
-                    <ItemList lista={listaProductos}/>
-                }
-        </div>
+        <>
+			{isLoading ? (
+				<div className='Spinner'>
+					<Loader />
+				</div>
+			) : (
+				<div>
+						<ItemList lista={listaProductos} />
+				</div>
+			)}
+		</>
     )
 }
+
 
 export default ItemListContainer;
