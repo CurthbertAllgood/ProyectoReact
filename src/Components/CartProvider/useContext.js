@@ -10,12 +10,11 @@ export const CartProvider = ({children}) => {
         return found;
     }
 
-
     const addItem = (item, qty) =>{
         isInCart(item.id)
         ?
         setItems(items.map((prod)=>{
-            if(prod.id==item.id){
+            if(prod.id===item.id){
                 prod.qty+=item.qty;
             }
             return prod;

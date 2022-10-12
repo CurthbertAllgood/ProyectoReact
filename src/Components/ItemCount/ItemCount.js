@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 
 
-const ItemCount= ({items, stock, initial, addItem}) =>{
+const ItemCount= ({items, stock, initial, addItem, onAdd}) =>{
     const [qty, setQty]=useState(initial);
 
     const SumaQty=()=>{
@@ -23,7 +23,7 @@ const ItemCount= ({items, stock, initial, addItem}) =>{
             <span className='espacio'>{qty}</span>
             <button disabled={qty>=stock} onClick={SumaQty}>+</button>
                 <div>
-                <button disabled={stock<=0} onClick={()=> addItem(items, qty)}>Agregar al pedido</button>
+                <button disabled={stock<=0} onClick={()=> (addItem(items, qty), onAdd())} >Agregar al pedido</button>
                 </div>
         </div>
 
